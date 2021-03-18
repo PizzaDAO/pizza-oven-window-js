@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <title>Make and Preview a Pizza</title>
+
+
+    <style>
+        .canvas_container {
+            height: 100%;
+            position: relative;
+            width: 100%;
+        }
+        .canvas_canvas {
+            height: 100%;
+            position: relative;
+            width: 100%;
+            z-index: 1;
+        }
+
+      #loader {
+        border: 16px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 16px solid #3498db;
+        width: 120px;
+        height: 120px;
+        -webkit-animation: spin 2s linear infinite; /* Safari */
+        animation: spin 2s linear infinite;
+      }
+
+      /* Safari */
+      @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      #pizzaProbabilityLabel {
+        color: #3371FF;
+      }
+    </style>
+  </head>
+  <body onresize="onResize()" onload="onLoad()">
+    <div>
+      <div id="header">
+        Hi. Please make a pizza!
+        (animate: <input type="checkbox" checked id="animation_checkbox" onclick='handleClickAnimation(this);'></input>)
+        <div>
+          <button onclick="onClickMakePizza_Fetch()">Make Pizza</button>
+        </div>
+  
+        <div>
+            PizzaDNA: <label id="pizzaDNALabel"></label>
+        </div>
+        <div>
+          Pizza Probability: <label id="pizzaProbabilityLabel"></label>
+        </div>  
+        <div>
+          Description: <label id="pizzaDescriptionLabel"></label>
+        </div>     
+      </div>
+
+      <div id="loader"></div>
+      <div class="canvas_container" id="pizza_container">
+        <canvas id="canvas" class="canvas_canvas"></canvas>
+      </div>
+
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/CanvasRenderer.js"></script>
+    <script src="js/index.js"></script>
+    
+    <script>
+
+        // query animation checkbox and default to it
+        var animation_checkbox = document.getElementById("animation_checkbox");
+        enableAnimation(animation_checkbox.checked);
+        function handleClickAnimation(cb) {
+          enableAnimation(cb.checked);
+        }
+
+    </script>
+
+  </body>
+</html>
