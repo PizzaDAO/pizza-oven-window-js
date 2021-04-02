@@ -77,7 +77,8 @@
     <script src="js/config.js"></script>
     <script src="js/CanvasRenderer.js"></script>
     <script src="js/index.js"></script>
-    
+
+
     <script>
 
         // query animation checkbox and default to it
@@ -85,6 +86,18 @@
         enableAnimation(animation_checkbox.checked);
         function handleClickAnimation(cb) {
           enableAnimation(cb.checked);
+        }
+
+        // get dna from url
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const dna = urlParams.get('dna');
+
+        if (dna != undefined && dna != null && dna != "")
+        {
+          // some error checking/correction/alerting here
+          // make and render!
+          onClickMakePizza_Fetch(dna);
         }
 
     </script>
